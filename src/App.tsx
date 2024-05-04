@@ -7,8 +7,8 @@ import {Body} from "./site/Body";
 function App() {
   return (
    <>
-       <Header title={"Header title"}/>
-       <Body/>
+       <Header titleForHeader={"NEW HEADER"}/>
+       <Body titleForBody={"NEW BODY"}/>
        <Footer/>
    </>
   );

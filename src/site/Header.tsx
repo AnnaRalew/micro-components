@@ -1,11 +1,11 @@
 import {FC} from "react";
 
 type HeaderPropsType = {
-    title: string
+    titleForHeader: string
 }
 
 export const Header: FC<HeaderPropsType> = (props) => {
     return (
-        <>{props.title}</>
+        <>{props.titleForHeader}</>
     )
 }
