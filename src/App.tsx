@@ -7,7 +7,7 @@ import {Body} from "./site/Body";
 function App() {
   return (
    <>
-       <Header/>
+       <Header title={"Header title"}/>
        <Body/>
        <Footer/>
    </>

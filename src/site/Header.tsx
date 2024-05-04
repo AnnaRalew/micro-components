@@ -1,5 +1,11 @@
-export const Header = () => {
+import {FC} from "react";
+
+type HeaderPropsType = {
+    title: string
+}
+
+export const Header: FC<HeaderPropsType> = (props) => {
     return (
-        <>Header</>
+        <>{props.title}</>
     )
 }
