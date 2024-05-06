@@ -24,7 +24,7 @@ function App() {
        <Header titleForHeader={"NEW HEADER"}/>
        <Body titleForBody={"NEW BODY"}/>
        <Footer/>
-       <NewComponent/>
+       <NewComponent students={students}/>
 
    </>
   );
