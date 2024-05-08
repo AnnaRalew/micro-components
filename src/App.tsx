@@ -20,8 +20,16 @@ function App() {
                                                  {id: 10, name: "Charles", age: 98},
                                                  {id: 11, name: "Christopher", age: 100},
                                              ])
-    const buttonOnClickHandler =(name: string)=>{
-        console.log(name)
+    // const buttonOnClickHandler =(name: string)=>{
+    //     console.log(name)
+    // }
+    let [a, setA] = useState(0)
+    const onClickHandler=(name:string)=>{
+        if(name==="Reset"){
+            setA(0)
+        }else {
+            setA(++a)
+        }
     }
 
   return (
@@ -30,8 +38,10 @@ function App() {
        <Body titleForBody={"NEW BODY"}/>
        <Footer/>
        <NewComponent students={students}/>
-       <Button onClickHandler={()=>buttonOnClickHandler("Button1")} name={"Button1"}/>
-
+       {/*<Button onClickHandler={()=>buttonOnClickHandler("Button1")} name={"Button1"}/>*/}
+       <h1>{a}</h1>
+       <Button name={"Increment"} onClickHandler={()=>onClickHandler("Increment")}/>
+       <Button name={"Reset"} onClickHandler={()=>onClickHandler("Reset")}/>
    </>
   );
 }
