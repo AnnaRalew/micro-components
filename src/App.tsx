@@ -4,6 +4,7 @@ import {Header} from "./site/Header";
 import {Footer} from "./site/Footer";
 import {Body} from "./site/Body";
 import {NewComponent} from "./components/NewComponent";
+import {Button} from "./components/Button";
 
 function App() {
     const [students, setStudents] = useState([
@@ -19,12 +20,17 @@ function App() {
                                                  {id: 10, name: "Charles", age: 98},
                                                  {id: 11, name: "Christopher", age: 100},
                                              ])
+    const buttonOnClickHandler =(name: string)=>{
+        console.log(name)
+    }
+
   return (
    <>
        <Header titleForHeader={"NEW HEADER"}/>
        <Body titleForBody={"NEW BODY"}/>
        <Footer/>
        <NewComponent students={students}/>
+       <Button onClickHandler={()=>buttonOnClickHandler("Button1")} name={"Button1"}/>
 
    </>
   );
