@@ -49,6 +49,13 @@ function App() {
         setFilter(value)
     }
 
+    let currentMoney = money
+    if(filter === 'ruble') {
+        currentMoney = currentMoney.filter((m)=> m.banknots === 'RUBLS')
+    } if(filter === 'dollar') {
+        currentMoney = currentMoney.filter((m)=> m.banknots === 'Dollars')
+    }
+
 
   return (
    <>
@@ -61,15 +68,15 @@ function App() {
        {/*<Button name={"Increment"} onClickHandler={()=>onClickHandler("Increment")}/>*/}
        {/*<Button name={"Reset"} onClickHandler={()=>onClickHandler("Reset")}/>*/}
        <ul>
-           {money.map((m, index) =>{return (
+           {currentMoney.map((m, index) =>{return (
                <li>
-                   <span>{m.number}</span>
-                   <span>{m.value}</span>
-                   <span>{m.banknots}</span>
+                   <span> {m.number} </span>
+                   <span> {m.value} </span>
+                   <span> {m.banknots} </span>
                </li>
            )})}
        </ul>
-       <div>
+       <div style={{margin: '50px'}}>
            <Button onClickHandler={()=>onClickFilterHandler('all')} name={'all'}/>
            <Button onClickHandler={()=>onClickFilterHandler('ruble')} name={'ruble'}/>
            <Button onClickHandler={()=>onClickFilterHandler('dollar')} name={'dollar'}/>
