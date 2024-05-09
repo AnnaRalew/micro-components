@@ -6,6 +6,7 @@ import {Body} from "./site/Body";
 import {NewComponent} from "./components/NewComponent";
 import {Button} from "./components/Button";
 
+type filterType = 'all' | 'ruble' | 'dollar'
 function App() {
     const [money, setMoney] = useState([
                                            { banknots: 'Dollars', value: 100, number: ' a1234567890' },
@@ -44,6 +45,10 @@ function App() {
     //         setA(++a)
     //     }
     // }
+    const onClickFilterHandler = (value: filterType) => {
+        setFilter(value)
+    }
+
 
   return (
    <>
@@ -64,11 +69,11 @@ function App() {
                </li>
            )})}
        </ul>
-       {/*<div>*/}
-       {/*    <Button/>*/}
-       {/*    <Button/>*/}
-       {/*    <Button/>*/}
-       {/*</div>*/}
+       <div>
+           <Button onClickHandler={()=>onClickFilterHandler('all')} name={'all'}/>
+           <Button onClickHandler={()=>onClickFilterHandler('ruble')} name={'ruble'}/>
+           <Button onClickHandler={()=>onClickFilterHandler('dollar')} name={'dollar'}/>
+       </div>
 
    </>
   );
