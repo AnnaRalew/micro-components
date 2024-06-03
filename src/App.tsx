@@ -5,21 +5,22 @@ import {Footer} from "./site/Footer";
 import {Body} from "./site/Body";
 import {NewComponent} from "./components/NewComponent";
 import {Button} from "./components/Button";
+import {FullInput} from "./components/FullInput";
 
 type filterType = 'all' | 'ruble' | 'dollar'
 function App() {
-    const [money, setMoney] = useState([
-                                           { banknots: 'Dollars', value: 100, number: ' a1234567890' },
-                                           { banknots: 'Dollars', value: 50, number: ' z1234567890' },
-                                           { banknots: 'RUBLS', value: 100, number: ' w1234567890' },
-                                           { banknots: 'Dollars', value: 100, number: ' e1234567890' },
-                                           { banknots: 'Dollars', value: 50, number: ' c1234567890' },
-                                           { banknots: 'RUBLS', value: 100, number: ' r1234567890' },
-                                           { banknots: 'Dollars', value: 50, number: ' x1234567890' },
-                                           { banknots: 'RUBLS', value: 50, number: ' v1234567890' },
-                                       ])
-
-    const [filter, setFilter] = useState('all')
+    // const [money, setMoney] = useState([
+    //                                        { banknots: 'Dollars', value: 100, number: ' a1234567890' },
+    //                                        { banknots: 'Dollars', value: 50, number: ' z1234567890' },
+    //                                        { banknots: 'RUBLS', value: 100, number: ' w1234567890' },
+    //                                        { banknots: 'Dollars', value: 100, number: ' e1234567890' },
+    //                                        { banknots: 'Dollars', value: 50, number: ' c1234567890' },
+    //                                        { banknots: 'RUBLS', value: 100, number: ' r1234567890' },
+    //                                        { banknots: 'Dollars', value: 50, number: ' x1234567890' },
+    //                                        { banknots: 'RUBLS', value: 50, number: ' v1234567890' },
+    //                                    ])
+    //
+    // const [filter, setFilter] = useState('all')
 
     // const [students, setStudents] = useState([
     //                                              {id: 1, name: "James", age: 8},
@@ -45,17 +46,28 @@ function App() {
     //         setA(++a)
     //     }
     // }
-    const onClickFilterHandler = (value: filterType) => {
-        setFilter(value)
-    }
+    // const onClickFilterHandler = (value: filterType) => {
+    //     setFilter(value)
+    // }
+    //
+    // let currentMoney = money
+    // if(filter === 'ruble') {
+    //     currentMoney = currentMoney.filter((m)=> m.banknots === 'RUBLS')
+    // } if(filter === 'dollar') {
+    //     currentMoney = currentMoney.filter((m)=> m.banknots === 'Dollars')
+    // }
 
-    let currentMoney = money
-    if(filter === 'ruble') {
-        currentMoney = currentMoney.filter((m)=> m.banknots === 'RUBLS')
-    } if(filter === 'dollar') {
-        currentMoney = currentMoney.filter((m)=> m.banknots === 'Dollars')
+    const [message, setMessage] = useState([
+                                               {message: 'message1'},
+                                               {message: 'message2'},
+                                               {message: 'message3'},
+                                               {message: 'message4'},
+                                               {message: 'message5'}
+                                           ])
+    const addMessage = (title: string) => {
+        let newMessage = {message: title}
+        setMessage([newMessage, ...message])
     }
-
 
   return (
    <>
@@ -67,21 +79,32 @@ function App() {
        {/*<h1>{a}</h1>*/}
        {/*<Button name={"Increment"} onClickHandler={()=>onClickHandler("Increment")}/>*/}
        {/*<Button name={"Reset"} onClickHandler={()=>onClickHandler("Reset")}/>*/}
-       <ul>
-           {currentMoney.map((m, index) =>{return (
-               <li>
-                   <span> {m.number} </span>
-                   <span> {m.value} </span>
-                   <span> {m.banknots} </span>
-               </li>
-           )})}
-       </ul>
-       <div style={{margin: '50px'}}>
-           <Button onClickHandler={()=>onClickFilterHandler('all')} name={'all'}/>
-           <Button onClickHandler={()=>onClickFilterHandler('ruble')} name={'ruble'}/>
-           <Button onClickHandler={()=>onClickFilterHandler('dollar')} name={'dollar'}/>
-       </div>
+       {/*<ul>*/}
+       {/*    {currentMoney.map((m, index) =>{return (*/}
+       {/*        <li>*/}
+       {/*            <span> {m.number} </span>*/}
+       {/*            <span> {m.value} </span>*/}
+       {/*            <span> {m.banknots} </span>*/}
+       {/*        </li>*/}
+       {/*    )})}*/}
+       {/*</ul>*/}
+       {/*<div style={{margin: '50px'}}>*/}
+       {/*    <Button onClickHandler={()=>onClickFilterHandler('all')} name={'all'}/>*/}
+       {/*    <Button onClickHandler={()=>onClickFilterHandler('ruble')} name={'ruble'}/>*/}
+       {/*    <Button onClickHandler={()=>onClickFilterHandler('dollar')} name={'dollar'}/>*/}
+       {/*</div>*/}
 
+
+       <div className="App">
+           <div>
+               <FullInput addMessage={addMessage}/>
+           </div>
+           {message.map((el, index) => {
+               return (
+                   <div key={index}>{el.message}</div>
+               )
+           })}
+       </div>
    </>
   );
 }
